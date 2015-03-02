@@ -22,21 +22,33 @@ import lejos.nxt.comm.Bluetooth;
 
 public class RTOS_GT {
 	
-	static RegulatedMotor steeringMotor = Motor.A;
+	static NXTRegulatedMotor steeringMotor = Motor.A;
+	static NXTRegulatedMotor driveMotor_Driver = Motor.B;
+	static NXTRegulatedMotor driveMotor_Passen = Motor.C;
+	static int leftMax = -110;
+	static int rightMax = 110;
 	
 	public static void main(String[] args) throws Exception 
 	{
-	
-		
-		//Note to self - Roughly -115 to 115 is our steering limits
+		//I tried to create a calibration system, but the gears slip too much
 	
 	
 		while(!Button.ESCAPE.isDown()) {
-			steeringMotor.flt();
-			LCD.clear();
-			LCD.drawString("Degrees", 0, 0);
-			LCD.drawInt(steeringMotor.getTachoCount(), 0, 1);
-			Thread.sleep(500);
+			steeringMotor.rotateTo(leftMax);
+			steeringMotor.rotateTo(rightMax);
+			driveMotor_Driver.stop();
+			driveMotor_Passen.flt();
+			//LCD.clear();
+			//LCD.drawString("Degrees", 0, 0);
+			//LCD.drawInt(steeringMotor.getTachoCount(), 0, 1);
+			//Thread.sleep(500);
 		}
-	}	
+		steeringMotor.rotateTo(0);
+	}
+	
+	public void elecDifferential(){
+		
+	}
+	
 }
+
