@@ -52,3 +52,16 @@ public class RTOS_GT {
 	
 }
 
+
+/*								|------>Differential----v	|----------> slipping w/ accel------v 	
+ * 				start ----> Steering ---------------> accel/decel --------------------------> terminus
+ * 															|----------> slipping w/ decel------^
+ * 
+ * 				start ----> bluetooth control receipt ---> terminus
+ * 
+ * 									|---------------------> Initiate brake--------v
+ * 				start ----> collision detection -------------------------------> terminus
+ * 
+ * 
+ */
+
