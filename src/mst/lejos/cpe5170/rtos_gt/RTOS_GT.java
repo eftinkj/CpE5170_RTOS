@@ -2,6 +2,7 @@ package mst.lejos.cpe5170.rtos_gt;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.lang.Math;
 
 
 
@@ -27,6 +28,8 @@ public class RTOS_GT {
 	static NXTRegulatedMotor driveMotor_Passen = Motor.C;
 	static int leftMax = -110;
 	static int rightMax = 110;
+	static float width = 14; //14 cm
+	static float length = 22; //22 cm
 	
 	public static void main(String[] args) throws Exception 
 	{
@@ -45,12 +48,25 @@ public class RTOS_GT {
 		}
 		steeringMotor.rotateTo(0);
 	}
-	
-	public void elecDifferential(){
 		
+	public float differential(){
+		if ((motor.side == driveMotor_Driver && steering.degree >= 0) or (motor.side == driveMotor_Passen && steering.degree >= 0))
+				{
+					return (float) 1.0;
+				}
+				else	{
+						float pivotDistance = length / tan(abs(steering.degree)* Math.PI/180);
+					float innerWheel = (float) (pivotDistance - width/2.0);
+	        float outerWheel = (float) (pivotDistance + width/2.0);
+			return (float) (innerWheel/outerWheel);
+		}
+	
+	
 	}
 	
 }
+
+
 
 
 /*								|------>Differential----v	|----------> slipping w/ accel------v 	
