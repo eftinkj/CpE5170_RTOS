@@ -60,7 +60,8 @@ public class RTOS_GT {
 	        float outerWheel = (float) (pivotDistance + width/2.0);
 			return (float) (innerWheel/outerWheel);
 		}
-	
+	//This section of code is heavily influenced by Vehicle safety systems
+	//	implemented on a LEGO car by J. Wortmann Et. al.
 	
 	}
 	
