@@ -77,15 +77,16 @@ public class RTOS_GT {
 	{
 		if (differentialFlag)
 		{
+			float k = differential() * driveSpeed;
 			if (steeringDegree >= 0)
 			{
 				driveMotor_Passen.setSpeed(driveSpeed);
-				driveMotor_Driver.setSpeed(differential() * driveSpeed);
+				driveMotor_Driver.setSpeed(k);
 			}
 			else
 			{
 				driveMotor_Driver.setSpeed(driveSpeed);
-				driveMotor_Passen.setSpeed(differential() * driveSpeed);
+				driveMotor_Passen.setSpeed(k);
 			}
 		}
 		else
