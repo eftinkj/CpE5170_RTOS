@@ -28,11 +28,12 @@ public class RTOS_GT {
 	static NXTRegulatedMotor driveMotor_Passen = Motor.C;
 	final static int leftMax = -105;
 	final static int rightMax = 105;
-	final static float width = 14; //14 cm
-	final static float length = 22; //22 cm
+	final static double width = 12.5; //12.5 cm
+	final static double length = 17.5; //17.5 cm
 	static int steeringDegree = 0;
 	static int driveSpeed = 600;
-	static boolean differentialFlag = true; 
+	static boolean differentialFlag = true;
+	static int turnThreshold = 20;
 	
 	public static void main(String[] args) throws Exception 
 	{
@@ -40,11 +41,11 @@ public class RTOS_GT {
 	
 	
 		while(!Button.ESCAPE.isDown()) {
-			steeringDegree = leftMax;
+			steeringDegree = -10;
 			steeringMotor.rotateTo(steeringDegree);
 			drive(driveSpeed);
 			Thread.sleep(500);
-			steeringDegree = rightMax;
+			steeringDegree = 10;
 			steeringMotor.rotateTo(steeringDegree);
 			drive(driveSpeed);
 			Thread.sleep(500);
@@ -58,7 +59,7 @@ public class RTOS_GT {
 	}
 		
 	public static float differential(){
-		if (steeringDegree == 0)
+		if ((steeringDegree < turnThreshold) && (steeringDegree > -turnThreshold))
 				{
 					return (float) 1.0;
 				}
