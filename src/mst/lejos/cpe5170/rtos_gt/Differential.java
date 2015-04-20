@@ -9,27 +9,19 @@ public class Differential extends Thread{
 	
 	public void run(){
 		while(true){
-			if ((DEObj.getSteeringDegree() < turnThreshold) && (DEObj.getSteeringDegree() > -turnThreshold))
+			if ((DEObj.getSteeringDegree() < RTOS_Constants.turnThreshold) && (DEObj.getSteeringDegree() > -RTOS_Constants.turnThreshold))
 			{
 				DEObj.setDiffSpeed(1.0f);
 			}
 			else
 			{
-				float pivotDistance = (float) (length / Math.tan(Math.abs(DEObj.getSteeringDegree())* Math.PI/180));
-				float innerWheel = (float) (pivotDistance - width/2.0);
-				float outerWheel = (float) (pivotDistance + width/2.0);
+				float pivotDistance = (float) (RTOS_Constants.length / Math.tan(Math.abs(DEObj.getSteeringDegree())* Math.PI/180));
+				float innerWheel = (float) (pivotDistance - RTOS_Constants.width/2.0);
+				float outerWheel = (float) (pivotDistance + RTOS_Constants.width/2.0);
 				DEObj.setDiffSpeed ((float) innerWheel/outerWheel);
 			}
 				}
 					
 			}
-		}
-	}
-
-	
-	
-	
-	
-	
-	
 }
+
