@@ -3,7 +3,7 @@ package mst.lejos.cpe5170.rtos_gt;
 public class DataExchange {
 	private int steeringDegree;
 	private int driveSpeed;
-	private float diffSpeed;
+	private float diffRatio;
 	
 	public DataExchange(){
 	}
@@ -12,12 +12,12 @@ public class DataExchange {
 		driveSpeed = speed;
 	}
 	
-	public void setDiffSpeed(float speed){
-		diffSpeed = speed;
+	public void setDiffRatio(float ratio){
+		diffRatio = ratio;
 	}
 	
-	public float getDiffSpeed(){
-		return diffSpeed;
+	public float getDiffRatio(){
+		return diffRatio;
 	}
 	
 	public int getDriveSpeed(){
