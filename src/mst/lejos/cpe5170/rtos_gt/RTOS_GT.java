@@ -28,10 +28,10 @@ public class RTOS_GT //implements CommandPerformer//
 	static NXTRegulatedMotor steeringMotor = Motor.A;
 	static NXTRegulatedMotor driveMotor_Driver = Motor.B;
 	static NXTRegulatedMotor driveMotor_Passen = Motor.C;
-	final static int leftMax = -105;
-	final static int rightMax = 105;
-	final static float width = 12.5f; //12.5 cm
-	final static float length = 17.5f; //17.5 cm
+	public final static int leftMax = -105;
+	public final static int rightMax = 105;
+	public final static float width = 12.5f; //12.5 cm
+	public final static float length = 17.5f; //17.5 cm
 	static int steeringDegree = 0;
 	static int driveSpeed = 600;
 	static boolean differentialFlag = true;
