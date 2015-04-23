@@ -1,35 +1,38 @@
 package mst.lejos.cpe5170.rtos_gt;
+import java.util.concurrent.atomic.*;
+
 
 public class DataExchange {
-	private int steeringDegree;
-	private int driveSpeed;
-	private float diffRatio;
+	
+	private AtomicInteger steeringDegree = new AtomicInteger();
+	private AtomicInteger driveSpeed = new AtomicInteger();
+	private AtomicFloat diffRatio = new AtomicFloat();
 	
 	public DataExchange(){
 	}
 	
 	public void setDriveSpeed(int speed){
-		driveSpeed = speed;
+		driveSpeed.set(speed);;
 	}
 	
 	public void setDiffRatio(float ratio){
-		diffRatio = ratio;
+		diffRatio.set(ratio);
 	}
 	
 	public float getDiffRatio(){
-		return diffRatio;
+		return diffRatio.get();
 	}
 	
 	public int getDriveSpeed(){
-		return driveSpeed;
+		return driveSpeed.get();
 	}
 	
 	public void setSteeringDegree(int degree){
-		steeringDegree = degree;
+		steeringDegree.set(degree);;
 	}
 	
 	public int getSteeringDegree(){
-		return steeringDegree;
+		return steeringDegree.get();
 	}
 
 }
